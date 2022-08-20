@@ -6,22 +6,17 @@
  * @date 2022-08-20
  *
  * @copyright Copyright (c) 2022
- *
- * Sn = a1 + a2 + ... + an
- * Sn = a1 + a1*q + a1*q^2 + ... + a1*q^(n-1)       (1)
- * q*Sn = q*a1 + a1*q^2 + a1*q^3 + ... + a1*q^n     (2)
- * (1) - (2):
- * Sn - q*Sn = a1 - a1*q^n
- * Sn(1 - q) = a1(1 - q^n)
- * Sn = a1(1 - q^n)/(1 - q)
- * Portanto, o número de nós de uma árvore binária com n folhas é (1 - 2^n)/(1 - 2) = -(1 - 2^n) = 2^n - 1
+ * 
+ * h = floor(log2(f)) (f = n. folhas, h = altura)
+ * N = 2^(h + 1) - 1 (N = n. elementos)
  */
 
 #include <iostream>
 #include <cmath>
 
-const int MAX_N = pow(2, 4);
-const int TOTAL = pow(2, MAX_N);
+const int MAX_N = 1E5;              // max n. of leaves
+const int H = ceil(log2(MAX_N));    // max height
+const int TOTAL = pow(2, H + 1);    // max n. of nodes in tree
 
 int stocksValues[MAX_N]{0};
 int segTree[TOTAL]{0};
@@ -38,7 +33,7 @@ void update(int iNode, int i, int j, int POS, int NEW_VALUE)
     {
         int l = 2 * iNode;        // left child
         int r = 2 * iNode + 1;    // right child
-        int m = (i + j) / 2;      // middle of interval
+        int m = (i + j) / 2;      // divide interval in half
 
         if (POS <= m)   // choose the child that contains the wanted position
         {
