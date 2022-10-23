@@ -2,7 +2,7 @@
 Grupo de Estudos para a Maratona de Programação
 USP-RP
 
-Soluções para as questões do Neps Academy
+Soluções para as questões do [Neps Academy](https://neps.academy/br/codcad).
 
 ## Como usar?
 Para colocar aqui as suas soluções também de problemas do Neps Academy, siga esses simples passos
